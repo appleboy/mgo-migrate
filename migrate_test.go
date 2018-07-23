@@ -124,25 +124,3 @@ func TestErrRollbackImpossible(t *testing.T) {
 	err = dropDB(session)
 	assert.Nil(t, err)
 }
-
-func Example() {
-	session, err := mgo.Dial("127.0.0.1")
-	if err != nil {
-		panic(err)
-	}
-
-	m := New(session, "test_db", DefaultOptions, []*Migration{{
-		ID: "201709201400",
-		Migrate: func(s *mgo.Session) error {
-			return nil
-		},
-		Rollback: func(s *mgo.Session) error {
-			return nil
-		},
-	}})
-	err = m.Migrate()
-
-	if err != nil {
-		panic(err)
-	}
-}
