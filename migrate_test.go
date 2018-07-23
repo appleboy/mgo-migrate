@@ -102,3 +102,25 @@ func TestErrNoMigrationDefined(t *testing.T) {
 	err = dropDB(session)
 	assert.Nil(t, err)
 }
+
+func TestErrRollbackImpossible(t *testing.T) {
+	session, err := mgo.Dial(dbHost)
+	assert.Nil(t, err)
+	defer session.Close()
+
+	// empty migration
+	m := New(session, dbName, DefaultOptions, []*Migration{{
+		ID: "201709201400",
+		Migrate: func(s *mgo.Session) error {
+			return nil
+		},
+	}})
+	err = m.Migrate()
+	assert.Nil(t, err)
+	err = m.RollbackLast()
+	assert.NotNil(t, err)
+	assert.Equal(t, ErrRollbackImpossible, err)
+
+	err = dropDB(session)
+	assert.Nil(t, err)
+}
