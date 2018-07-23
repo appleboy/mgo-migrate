@@ -6,8 +6,16 @@ pipeline:
   backend:
     image: golang:1.10
     commands:
-      - go get -v .
+      - go get -v -t .
       - go test -v -cover -coverprofile coverage.out
+
+  codecov:
+    image: robertstettner/drone-codecov
+    secrets: [ codecov_token ]
+    files:
+      - coverage.out
+    when:
+      event: [ push, pull_request ]
 
 services:
   mongodb:
