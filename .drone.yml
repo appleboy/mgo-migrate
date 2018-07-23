@@ -1,0 +1,9 @@
+workspace:
+  base: /go/src
+  path: github.com/appleboy/mgo-migrate
+
+pipeline:
+  backend:
+    image: golang:1.10
+    commands:
+      - echo "test"
