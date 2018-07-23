@@ -7,3 +7,9 @@ pipeline:
     image: golang:1.10
     commands:
       - echo "test"
+
+services:
+  mongodb:
+    image: mongo:4.1-xenial
+    environment:
+      - MONGO_INITDB_DATABASE=test_migrate
