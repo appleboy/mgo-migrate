@@ -6,3 +6,9 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/appleboy/mgo-migrate)](https://goreportcard.com/report/github.com/appleboy/mgo-migrate)
 
 Migrate function of MongoDB driver for Go
+
+## How to use
+
+```go
+
+```
