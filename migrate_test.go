@@ -3,8 +3,8 @@ package migrate
 import (
 	"testing"
 
+	"github.com/globalsign/mgo"
 	"github.com/stretchr/testify/assert"
-	"gopkg.in/mgo.v2"
 )
 
 var (

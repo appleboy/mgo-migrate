@@ -2,7 +2,7 @@ package migrate_test
 
 import (
 	"github.com/appleboy/mgo-migrate"
-	"gopkg.in/mgo.v2"
+	"github.com/globalsign/mgo"
 )
 
 func Example() {
